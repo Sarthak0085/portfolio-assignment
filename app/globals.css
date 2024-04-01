@@ -10,19 +10,19 @@ body {
 
 @layer components {
   .nav-link {
-    @apply font-semibold relative text-white cursor-pointer text-[17px] lg:block w-fit after:block after:content-[''] after:absolute after:h-[3px] after:bg-orange-500 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center hidden
+    @apply font-semibold relative text-slate-500 dark:text-white cursor-pointer text-[17px] lg:block w-fit after:block after:content-[''] after:absolute after:h-[3px] after:bg-orange-500 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center hidden
   }
 
   .nav-link-mobile {
-    @apply font-semibold relative mb-[2rem] text-white cursor-pointer text-[27px] md:block w-fit after:block after:content-[''] after:absolute after:h-[3px] after:bg-orange-500 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center
+    @apply font-semibold relative mb-[2rem] text-slate-500 dark:text-white cursor-pointer text-[27px] md:block w-fit after:block after:content-[''] after:absolute after:h-[3px] after:bg-orange-500 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center
   }
 
     .active {
-      @apply text-[17px] text-orange-500
+      @apply text-[17px] text-orange-500 dark:text-orange-500
     }
 
         .active-mobile {
-          @apply text-[27px] text-orange-500
+          @apply text-[27px] text-orange-500 dark:text-orange-500
         }
 
   .heading {

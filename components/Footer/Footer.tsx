@@ -5,14 +5,13 @@ import React from "react";
 
 const Footer = ({ data }: { data: userData | null }) => {
   return (
-    <footer className="w-full border-t-2 border-solid border-black font-medium text-lg">
+    <footer className="w-full border-t-[1px] border-solid dark:bg-[#09101e] border-black dark:border-white font-medium text-lg">
       <div className="py-8 px-4 grid px-auto text-center sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-center items-center">
         <div>
           <span>{new Date().getFullYear()}&copy; All Rights Reserved.</span>
         </div>
         <div>
-          Build With{" "}
-          <span className="text-2xl text-[purple] px-1">&#9825;</span>{" "}
+          Build With <span className="text-2xl">&#129505;</span>{" "}
           {data?.about.name}
         </div>
         <div className="flex items-center justify-center gap-4">

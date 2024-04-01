@@ -2,11 +2,11 @@
 import CircularText from "@/components/CircularText";
 import Loader from "@/components/Loader";
 import Parallax from "@/components/Parallax/Parallax";
-import Skills from "@/components/Skills/Skills";
+import Testimonials from "@/components/Testimonials/Testimonials";
 import useFetchData from "@/hooks/useFetchData";
 import { userData } from "@/utils/types";
 
-const SkillsPage = () => {
+const TestimonialsPage = () => {
   const { loading, error, data, isMounted } = useFetchData<userData>();
 
   if (!isMounted) {
@@ -22,10 +22,10 @@ const SkillsPage = () => {
   ) : (
     <div className="overflow-x-hidden">
       <CircularText />
-      <Parallax type="skills" />
-      <Skills data={data} />
+      <Parallax type="testimonials" />
+      <Testimonials data={data} />
     </div>
   );
 };
 
-export default SkillsPage;
+export default TestimonialsPage;

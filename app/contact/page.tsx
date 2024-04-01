@@ -1,21 +1,31 @@
 "use client";
-import Contact from '@/components/Contact/Contact';
-import Heading from '@/utils/heading';
-import React, { useState } from 'react'
+import CircularText from "@/components/CircularText";
+import Contact from "@/components/Contact/Contact";
+import Loader from "@/components/Loader";
+import Parallax from "@/components/Parallax/Parallax";
+import useFetchData from "@/hooks/useFetchData";
+import { userData } from "@/utils/types";
 
-const page = () => {
-  return (
-      <div className='overflow-x-hidden'>
-          <Heading 
-        title='Contact'
-        description="This page shows the Person's Contact details"
-        keywords='Nextjs, particles, react, Contact , Web Development, Programming'
-      />
-       <div className='h-full mt-[3.5rem] overflow-y-hidden'>
-        <Contact />
-      </div>
+const ContactPage = () => {
+  const { loading, error, data, isMounted } = useFetchData<userData>();
+
+  if (!isMounted) {
+    return null;
+  }
+
+  return loading ? (
+    <Loader />
+  ) : error ? (
+    <div className="flex h-[100vh] items-center justify-center text-[red] text-4xl font-bold">
+      {error?.message ?? "There is an error while fetching the data."}
     </div>
-  )
-}
+  ) : (
+    <div className="overflow-x-hidden">
+      <CircularText />
+      <Parallax type="contact" />
+      <Contact data={data} />
+    </div>
+  );
+};
 
-export default page
+export default ContactPage;

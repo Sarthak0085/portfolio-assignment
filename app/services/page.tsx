@@ -2,11 +2,11 @@
 import CircularText from "@/components/CircularText";
 import Loader from "@/components/Loader";
 import Parallax from "@/components/Parallax/Parallax";
-import Skills from "@/components/Skills/Skills";
+import Services from "@/components/Services/Services";
 import useFetchData from "@/hooks/useFetchData";
 import { userData } from "@/utils/types";
 
-const SkillsPage = () => {
+const ServicesPage = () => {
   const { loading, error, data, isMounted } = useFetchData<userData>();
 
   if (!isMounted) {
@@ -20,12 +20,12 @@ const SkillsPage = () => {
       {error?.message ?? "There is an error while fetching the data."}
     </div>
   ) : (
-    <div className="overflow-x-hidden">
+    <div className="">
       <CircularText />
-      <Parallax type="skills" />
-      <Skills data={data} />
+      <Parallax type="services" />
+      <Services data={data} />
     </div>
   );
 };
 
-export default SkillsPage;
+export default ServicesPage;

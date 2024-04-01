@@ -1,20 +1,31 @@
+"use client";
 import About from "@/components/About/About";
-import Heading from "@/utils/heading";
-import React from "react";
+import CircularText from "@/components/CircularText";
+import Loader from "@/components/Loader";
+import Parallax from "@/components/Parallax/Parallax";
+import useFetchData from "@/hooks/useFetchData";
+import { userData } from "@/utils/types";
 
-const page = () => {
-  return (
+const AboutPage = () => {
+  const { loading, error, data, isMounted } = useFetchData<userData>();
+
+  if (!isMounted) {
+    return null;
+  }
+
+  return loading ? (
+    <Loader />
+  ) : error ? (
+    <div className="flex h-[100vh] items-center justify-center text-[red] text-4xl font-bold">
+      {error?.message ?? "There is an error while fetching the data."}
+    </div>
+  ) : (
     <div className="overflow-x-hidden">
-      <Heading
-        title={`About`}
-        description="Portfolio shows the about section of a person"
-        keywords="Nextjs, Programming, coding skills, Web Development"
-      />
-      <div className="h-full mt-[3.5rem] overflow-y-hidden">
-        <About />
-      </div>
+      <CircularText />
+      <Parallax type="about" />
+      <About data={data} />
     </div>
   );
 };
 
-export default page;
+export default AboutPage;

@@ -1,12 +1,13 @@
 "use client";
 import CircularText from "@/components/CircularText";
+import Experience from "@/components/Experience/Experience";
 import Loader from "@/components/Loader";
 import Parallax from "@/components/Parallax/Parallax";
-import Skills from "@/components/Skills/Skills";
+import Projects from "@/components/Projects/Projects";
 import useFetchData from "@/hooks/useFetchData";
 import { userData } from "@/utils/types";
 
-const SkillsPage = () => {
+const ProjectsPage = () => {
   const { loading, error, data, isMounted } = useFetchData<userData>();
 
   if (!isMounted) {
@@ -22,10 +23,11 @@ const SkillsPage = () => {
   ) : (
     <div className="overflow-x-hidden">
       <CircularText />
-      <Parallax type="skills" />
-      <Skills data={data} />
+      <Parallax type="portfolio" />
+      <Experience data={data} />
+      <Projects data={data} />
     </div>
   );
 };
 
-export default SkillsPage;
+export default ProjectsPage;

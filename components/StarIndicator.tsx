@@ -1,7 +1,7 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const CircleIndicator = () => {
+const StarIndicator = () => {
   const { scrollYProgress } = useScroll();
   const [percentage, setPercentage] = useState(0);
   const [isTextVisible, setIsTextVisible] = useState(false);
@@ -40,4 +40,4 @@ const CircleIndicator = () => {
   );
 };
 
-export default CircleIndicator;
+export default StarIndicator;

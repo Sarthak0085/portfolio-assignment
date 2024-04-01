@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 interface Props {
   skill: string;
   level: number;
-  delay: string;
+  delay: number;
   enabled: boolean;
   image: string;
 }
@@ -22,11 +22,17 @@ const SkillsItem: React.FC<Props> = ({
       <motion.div
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        data-aos="fadeInUp"
-        data-aos-delay={delay}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{
+          duration: 0.5,
+          type: "keyframes",
+          delay: delay,
+        }}
         className="flex flex-col sm:flex-row items-center gap-4"
       >
-        <div className="w-1/3 sm:pl-[2rem] flex items-center gap-2 text-white">
+        <div className="w-1/3 sm:pl-[2rem] flex items-center gap-2 text-black dark:text-white">
           {image && (
             <Image
               src={image}

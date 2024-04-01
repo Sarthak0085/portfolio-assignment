@@ -4,6 +4,7 @@ import React from "react";
 import { FaGithub } from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { MdArrowOutward } from "react-icons/md";
+import { motion } from "framer-motion";
 
 interface ProjectProps {
   title: string;
@@ -11,7 +12,7 @@ interface ProjectProps {
   description: string;
   LiveLink: string;
   githubLink: string;
-  delay: string;
+  delay: number;
   enabled: boolean;
   techStack: string[];
 }
@@ -31,14 +32,17 @@ const ProjectCard: React.FC<ProjectProps> = ({
   const encodedTechStack = encodeURIComponent(techStack.join(","));
 
   return (
-    enabled === true && (
+    <motion.div
+      initial={{ opacity: 0, x: "100%" }}
+      whileInView={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: "100%" }}
+      transition={{ duration: 0.5, type: "keyframes", delay: delay }}
+      className="border rounded-lg cursor-pointer relative bg-blue-50 dark:bg-slate-900 border-slate-500 hover:scale-110 transition-all duration-200"
+    >
       <Link
-        data-aos="fadeUpIn"
-        data-aos-delay={delay}
         href={`/project/${encodeURIComponent(
           title
         )}?image=${src}&description=${description}&github=${encodedGithubLink}&live=${encodedLiveLink}&techStack=${encodedTechStack}`}
-        className="border rounded-lg cursor-pointer  relative bg-blue-50 dark:bg-slate-900 border-slate-500 hover:scale-110 transition-all duration-200"
       >
         <div
           className="relative
@@ -84,7 +88,7 @@ const ProjectCard: React.FC<ProjectProps> = ({
           )}
         </div>
       </Link>
-    )
+    </motion.div>
   );
 };
 

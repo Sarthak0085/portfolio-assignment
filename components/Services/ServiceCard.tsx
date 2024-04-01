@@ -1,12 +1,11 @@
-import Image from "next/image";
-import React from "react";
+import { motion } from "framer-motion";
 
 interface IServiceCard {
   enabled: boolean;
   title: string;
   description: string;
   src: string;
-  delay: string;
+  delay: number;
   charge: string;
 }
 
@@ -20,34 +19,24 @@ const ServiceCard = ({
 }: IServiceCard) => {
   return (
     enabled === true && (
-      <div
-        data-aos="fadeUpIn"
-        data-aos-delay={delay}
-        className="border rounded-lg border-slate-500  hover:scale-110"
+      <motion.div
+        initial={{ opacity: 0, y: "100%" }}
+        whileInView={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: "100%" }}
+        transition={{ duration: 0.5, type: "keyframes", delay: delay }}
+        className="relative w-full max-w-lg mb-[2rem] h-80 rounded-lg "
       >
         <div
-          className="relative
-                 h-[250px] 500px:h-[300px]"
-        >
-          <Image
-            src={src}
-            alt={title}
-            layout="fill"
-            className="object-cover rounded-t-lg"
-          />
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${src})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70" />
+        <div className="absolute bottom-0 left-0 right-0 p-4 backdrop-blur-sm">
+          <h3 className="text-white text-lg font-bold mb-2">{title}</h3>
+          <p className="text-white text-sm">{description}</p>
+          <p className="text-md text-blue-500 dark:text-[#55e6a5]">{charge}</p>
         </div>
-        <h2 className="bg-gradient-to-r bg-clip-text text-transparent pt-5 text-center from-blue-500 to-[#55e6a5] font-bold text-[22px]">
-          {title}
-        </h2>
-        <h4 className="px-[10px] text-[#55e6a5] pt-5 text-[16px]">
-          {description}
-        </h4>
-        <div className="text-white flex flex-col 500px:flex-row  items-center justify-between gap-4 px-[10px] my-[20px]">
-          <div className="flex gap-2 w-full items-center justify-center border p-3 rounded-md border-blue-500 text-[#55e6a5] ">
-            {charge}
-          </div>
-        </div>
-      </div>
+      </motion.div>
     )
   );
 };

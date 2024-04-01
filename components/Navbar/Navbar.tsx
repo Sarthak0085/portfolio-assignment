@@ -1,72 +1,58 @@
 "use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Heading from "@/utils/heading";
+import { userData } from "@/utils/types";
+import { motion } from "framer-motion";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
-import { motion } from "framer-motion";
-import useFetchData from "@/hooks/useFetchData";
-import { userData } from "@/utils/types";
-import Heading from "@/utils/heading";
 import ThemeToggler from "../ThemeToggler";
 
 interface Props {
   openNav: () => void;
+  data: userData | null;
 }
 
-const MotionLink = motion(Link);
+const Navbar: React.FC<Props> = ({ data, openNav }) => {
+  const pathname = usePathname();
+  const router = useRouter();
+  const [activeLink, setActiveLink] = useState(pathname);
 
-const Navbar: React.FC<Props> = ({ openNav }) => {
-  const { loading, error, data } = useFetchData<userData>();
-  console.log(data);
-
-  const [pathname, setPathname] = useState<string>(usePathname());
   const [headProps, setHeadProps] = useState({
     title: `Portfolio-${data?.about.name}`,
     description: `This page shows the ${data?.about.name} Portfolio Home page`,
     keywords: `React, Nextjs, Framer-Motion`,
   });
 
-  const handleScroll = () => {
-    const sections = [
-      "home",
-      "about",
-      "skills",
-      "services",
-      "projects",
-      "testimonials",
-      "contact",
-    ];
-
-    for (const sectionId of sections) {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        if (rect.top <= 0 && rect.bottom >= 0) {
-          const newPathname = sectionId === "home" ? "/" : `/${sectionId}`;
-          setPathname(newPathname);
-          window.history.replaceState(null, "", newPathname);
-          return;
-        }
-      }
-    }
-  };
-
-  const scrollToSection = (sectionId: string, newPathname: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setTimeout(() => {
-        setPathname(newPathname);
-        window.history.replaceState(
-          null,
-          "",
-          newPathname !== "home" ? newPathname : "/"
-        );
-      }, 300);
-    }
+  const handleLinkClick = (path: string) => {
+    setActiveLink(path);
+    router.push(path);
   };
 
   useEffect(() => {
+    const handleScroll = () => {
+      const sections = [
+        { id: "home", path: "/" },
+        { id: "about", path: "/about" },
+        { id: "contact", path: "/contact" },
+        { id: "testimonials", path: "/testimonials" },
+        { id: "skills", path: "/skills" },
+        { id: "services", path: "/services" },
+        { id: "portfolio", path: "/portfolio" },
+      ];
+
+      for (const section of sections) {
+        const element = document.getElementById(section.id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 0 && rect.bottom >= 0) {
+            setActiveLink(section.path);
+            window.history.replaceState(null, "", section.path);
+            return;
+          }
+        }
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -75,15 +61,15 @@ const Navbar: React.FC<Props> = ({ openNav }) => {
 
   useEffect(() => {
     const updateTitleDescriptionKeywords = () => {
-      const title = `Portfolio-${
-        data ? data?.about.name : "John Doe"
-      } | ${pathname.substring(1)}`;
+      const title = `Portfolio-${data ? data?.about.name : "John Doe"} ${
+        activeLink.substring(1) !== "" ? "| " + activeLink.substring(1) : ""
+      }`;
       const description =
-        pathname === "/"
+        activeLink === "/"
           ? `This page shows the ${data?.about.name} Portfolio Home page`
           : `This page shows the ${
               data?.about.name
-            } Portfolio's ${pathname.substring(1)} page`;
+            } Portfolio's ${activeLink.substring(1)} page`;
       const keywords = "Nextjs, react, framer-motion";
 
       return { title, description, keywords };
@@ -91,7 +77,7 @@ const Navbar: React.FC<Props> = ({ openNav }) => {
 
     const { title, description, keywords } = updateTitleDescriptionKeywords();
     setHeadProps({ title, description, keywords });
-  }, [pathname]);
+  }, [activeLink]);
 
   return (
     <>
@@ -100,11 +86,11 @@ const Navbar: React.FC<Props> = ({ openNav }) => {
         description={headProps.description}
         keywords={headProps.keywords}
       />
-      <nav className="w-[100%] fixed z-[1000] h-[12vh] top-0 shadow-md bg-[#141c27]">
+      <nav className="w-[100%] fixed z-[1000] h-[12vh] top-0 shadow-2xl dark:shadow-md text-gray-100 dark:bg-[#141c27]">
         <div className="flex items-center justify-between w-[80%] mx-auto h-[100%]">
-          <MotionLink
-            href={"/"}
-            className="cursor-pointer text-[25px] text-white font-bold"
+          <motion.button
+            className="cursor-pointer text-[25px] text-slate-500 dark:text-white font-bold"
+            onClick={() => handleLinkClick("/")}
             whileHover={{
               color: [
                 "rgba(127, 255, 212, 1)", // Aquamarine
@@ -123,53 +109,61 @@ const Navbar: React.FC<Props> = ({ openNav }) => {
           >
             {data?.about.name.split(" ")[0]}&nbsp;
             {data?.about.name.split(" ")[1]}
-          </MotionLink>
-          <div className="flex w-[70%] gap-7 items-center justify-evenly">
+          </motion.button>
+          <div className="flex w-[70%] lg:gap-6 1350px:gap-7 items-center justify-evenly">
             <button
-              className={`nav-link ${pathname === "/" ? "active" : ""}`}
-              onClick={() => scrollToSection("home", "/")}
+              className={`nav-link ${activeLink === "/" ? "active" : ""}`}
+              onClick={() => handleLinkClick("/")}
             >
               Home
             </button>
             <button
-              className={`nav-link ${pathname === "/about" ? "active" : ""}`}
-              onClick={() => scrollToSection("about", "/about")}
+              className={`nav-link ${activeLink === "/about" ? "active" : ""}`}
+              onClick={() => handleLinkClick("/about")}
             >
               About
             </button>
             <button
-              className={`nav-link ${pathname === "/skills" ? "active" : ""}`}
-              onClick={() => scrollToSection("skills", "/skills")}
+              className={`nav-link ${activeLink === "/skills" ? "active" : ""}`}
+              onClick={() => handleLinkClick("/skills")}
             >
               Skills
             </button>
             <button
-              className={`nav-link ${pathname === "/services" ? "active" : ""}`}
-              onClick={() => scrollToSection("services", "/services")}
+              className={`nav-link ${
+                activeLink === "/services" ? "active" : ""
+              }`}
+              onClick={() => handleLinkClick("/services")}
             >
               Services
             </button>
             <button
-              className={`nav-link ${pathname === "/projects" ? "active" : ""}`}
-              onClick={() => scrollToSection("projects", "/projects")}
+              className={`nav-link ${
+                activeLink === "/portfolio" ? "active" : ""
+              }`}
+              onClick={() => handleLinkClick("/portfolio")}
             >
-              Work
+              Portfolio
             </button>
             <button
               className={`nav-link ${
-                pathname === "/testimonials" ? "active" : ""
+                activeLink === "/testimonials" ? "active" : ""
               }`}
-              onClick={() => scrollToSection("testimonials", "/testimonials")}
+              onClick={() => handleLinkClick("/testimonials")}
             >
               Testimonials
             </button>
             <button
-              className={`nav-link ${pathname === "/contact" ? "active" : ""}`}
-              onClick={() => scrollToSection("contact", "/contact")}
+              className={`nav-link ${
+                activeLink === "/contact" ? "active" : ""
+              }`}
+              onClick={() => handleLinkClick("/contact")}
             >
               Contact
             </button>
-            <ThemeToggler />
+            <div className="lg:block hidden">
+              <ThemeToggler />
+            </div>
           </div>
           <div className="lg:hidden" onClick={openNav}>
             <FaBars className="w-[2rem] h-[2rem] cursor-pointer text-orange-400" />

@@ -1,5 +1,12 @@
+"use client";
 import useWindowSize from "@/hooks/useWindowSize";
-import { useScroll, useTransform, motion, useAnimation } from "framer-motion";
+import {
+  useScroll,
+  useTransform,
+  motion,
+  useAnimation,
+  useSpring,
+} from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
 const Parallax = ({ type }: { type: string }) => {
@@ -9,15 +16,19 @@ const Parallax = ({ type }: { type: string }) => {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const yBg = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["0%", screenWidth > 1024 ? "60%" : "60%"]
+  const yBg = useSpring(
+    useTransform(
+      scrollYProgress,
+      [0, 1],
+      ["0%", screenWidth > 1024 ? "60%" : "60%"]
+    )
   );
-  const yText = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["0%", screenWidth > 768 ? "250%" : screenWidth > 500 ? "100%" : "50%"]
+  const yText = useSpring(
+    useTransform(
+      scrollYProgress,
+      [0, 1],
+      ["0%", screenWidth > 768 ? "250%" : screenWidth > 500 ? "100%" : "50%"]
+    )
   );
 
   const [currentColor, setCurrentColor] = useState("#ffffff");
@@ -34,17 +45,16 @@ const Parallax = ({ type }: { type: string }) => {
 
     return () => clearInterval(intervalId);
   }, [currentColor]);
+
   return (
     <div
       id={type}
       ref={ref}
-      className="flex items-center justify-center relative w-[100%] h-[100vh]"
-      style={{
-        background:
-          type === "services"
-            ? "linear-gradient(180deg, #111132, #0c0c1d)"
-            : "linear-gradient(180deg, #111132, #505064)",
-      }}
+      className={`flex items-center justify-center relative w-[100%] h-[100vh] ${
+        type === "services" || type === "about" || type === "testimonials"
+          ? "bg-gradient-to-b dark:from-[#111132] dark:to-[#0c0c1d] from-[#f0f0f0] to-[#a0a0a0]"
+          : "bg-gradient-to-b dark:from-[#111132] dark:to-[#505064] from-[#f0f0f0] to-[#c0c0c0]"
+      }`}
     >
       <motion.h1
         style={{ y: yText, color: currentColor }}
@@ -53,10 +63,10 @@ const Parallax = ({ type }: { type: string }) => {
       >
         {type === "services"
           ? "What I Do"
-          : type === "projects"
+          : type === "portfolio"
           ? "What I Did"
           : type === "testimonials"
-          ? "What People Thinks"
+          ? "People's Thinks"
           : type === "skills"
           ? "What I Knew"
           : type === "contact"
