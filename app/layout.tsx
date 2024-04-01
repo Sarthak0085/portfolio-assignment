@@ -1,18 +1,17 @@
 "use client";
-import { Poppins } from "next/font/google";
-import { useState } from "react";
-import "./globals.css";
+import CircleFollowingCursor from "@/components/CircleFollowingCursor";
+import Footer from "@/components/Footer/Footer";
+import Loader from "@/components/Loader";
 import MobileNavbar from "@/components/Navbar/MobileNavbar";
 import Navbar from "@/components/Navbar/Navbar";
-import { Toaster } from "react-hot-toast";
-import { ThemeProvider } from "next-themes";
+import StarIndicator from "@/components/StarIndicator";
 import useFetchData from "@/hooks/useFetchData";
 import { userData } from "@/utils/types";
-import Footer from "@/components/Footer/Footer";
-import CircleFollowingCursor from "@/components/CircleFollowingCursor";
-import StarIndicator from "@/components/StarIndicator";
-import CircularText from "@/components/CircularText";
-import Loader from "@/components/Loader";
+import { ThemeProvider } from "next-themes";
+import { Poppins } from "next/font/google";
+import { useState } from "react";
+import { Toaster } from "react-hot-toast";
+import "./globals.css";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
@@ -21,7 +20,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { loading, error, data, isMounted } = useFetchData<userData>();
+  const { loading, error, data } = useFetchData<userData>();
 
   const [nav, setNav] = useState(false);
   const openNav = () => {
@@ -35,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.className} min-h-screen overflow-x-hidden`}>
-        <ThemeProvider enableSystem={true} attribute="class">
+        <ThemeProvider attribute="class">
           {loading ? (
             <Loader />
           ) : error ? (

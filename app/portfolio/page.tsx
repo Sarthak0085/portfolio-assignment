@@ -10,9 +10,9 @@ import { userData } from "@/utils/types";
 const ProjectsPage = () => {
   const { loading, error, data, isMounted } = useFetchData<userData>();
 
-  if (!isMounted) {
-    return null;
-  }
+  // if (!isMounted) {
+  //   return null;
+  // }
 
   return loading ? (
     <Loader />

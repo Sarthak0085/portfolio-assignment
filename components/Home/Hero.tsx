@@ -76,9 +76,9 @@ const Hero = ({ data }: { data: userData | null }) => {
         ) : (
           <div
             key={index}
-            className="min-w-[350px] min-h-[450px] mx-[2rem] bg-gray-200 flex items-center justify-center"
+            className="min-w-[350px] min-h-[450px] mx-[2rem] bg-gray-200 dark:bg-gray-700 flex items-center justify-center"
           >
-            <p>Video not available or wrong url</p>
+            <p>Video not available or Invalid url</p>
           </div>
         )
       )}
@@ -97,41 +97,54 @@ const Hero = ({ data }: { data: userData | null }) => {
             </span>
             <span className="text-purple-500 block">({data?.about.title})</span>
           </h2>
-          <span className="text-black dark:text-white capitalize text-[2rem] font-semibold px-2">
+          <span className="text-black dark:text-white capitalize text-[1.5rem] md:text-[2rem] font-semibold px-2">
             I Develop
           </span>
           <TextAnimation data={data} />
-          {/* <p className="text-[20px] mt-[2rem] text-black">
-          {/* I&apos;m a fresher MERN stack developer and web enthusiast, eager to
-          learn and create exciting web projects. Passionate about coding and
-            exploring new technologies, I strive to build user-friendly and
-            efficient web applications. Excited to contribute to the
-            ever-evolving world of web development. */}
-          {/* {data?.about.description}
-        </p> */}
-          <div className="flex items-center mt-5 gap-4">
-            {data?.social_handles
-              .filter((item) => item.enabled === true)
-              .map((item) => (
-                <Link
-                  href={item.url}
-                  title={item.platform}
-                  key={item._id}
-                  className=""
-                >
-                  <Image
-                    src={item.image.url}
-                    alt={item.platform}
-                    height={30}
-                    width={30}
-                  />
-                </Link>
-              ))}
+          <div className="text-black dark:text-white mt-[1rem] font-medium ">
+            <span className="block mb-[1rem] px-2">My Tech Stack are</span>
+            {data?.skills.map((item, index) => (
+              <div
+                key={index}
+                className="inline-block ml-[1rem] relative w-[40px] h-[40px] bg-black/30 dark:bg-white/50 rounded-full backdrop-blur-lg"
+              >
+                <Image
+                  src={item?.image.url}
+                  alt={item?.image?.public_id}
+                  height={40}
+                  width={40}
+                  className="object-cover inline absolute inset-0 rounded-full"
+                />
+              </div>
+            ))}
           </div>
-          <div className="space-y-6 mt-[2rem] flex-col sm:space-y-0 sm:space-x-6 sm:flex sm:flex-row sm:items-center">
+          <div className="flex flex-col items-start mt-[1rem] px-2 font-medium ">
+            <span className="block mb-[1rem]">My Social Handles are</span>
+            <div className="flex items-center gap-4">
+              {data?.social_handles
+                .filter((item) => item.enabled === true)
+                .map((item) => (
+                  <Link
+                    href={item.url}
+                    title={item.platform}
+                    key={item._id}
+                    className="w-[40px] h-[40px]"
+                  >
+                    <Image
+                      src={item.image.url}
+                      alt={item.platform}
+                      height={40}
+                      width={40}
+                      className="object-cover inline rounded-full"
+                    />
+                  </Link>
+                ))}
+            </div>
+          </div>
+
+          <div className="space-y-6 mt-[2rem] px-2 flex-col sm:space-y-0 sm:space-x-6 sm:flex sm:flex-row sm:items-center">
             <Link
               href="/contact"
-              target="_blank"
               className="px-[1.5rem] gap-2 hover:bg-orange-400 transition-all duration-200 py-[1rem] text-[20px] font-bold
             flex  text-black bg-blue-200 space-x-2"
             >
@@ -153,7 +166,7 @@ const Hero = ({ data }: { data: userData | null }) => {
           whileInView={{ x: 0 }}
           exit={{ x: "100%" }}
           transition={{ duration: 0.5, type: "keyframes", delay: 0.5 }}
-          className="w-[300px] h-[300px] md:w-[400px] md:h-[400px] 1150px:w-[500px] 1150px:h-[500px] shadow-2xl shadow-black dark:shadow-white relative 1150px:flex items-center rounded-full bg-black dark:bg-white"
+          className="w-[300px] h-[300px] md:w-[400px] mb-[2rem] md:h-[400px] 1150px:w-[500px] 1150px:h-[500px] shadow-2xl shadow-black dark:shadow-white relative 1150px:flex items-center rounded-full bg-black dark:bg-white"
         >
           <Image
             src={data?.about.avatar.url ?? ""}

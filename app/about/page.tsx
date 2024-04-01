@@ -9,10 +9,6 @@ import { userData } from "@/utils/types";
 const AboutPage = () => {
   const { loading, error, data, isMounted } = useFetchData<userData>();
 
-  if (!isMounted) {
-    return null;
-  }
-
   return loading ? (
     <Loader />
   ) : error ? (

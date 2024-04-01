@@ -7,12 +7,24 @@ import { MdOutlineWbSunny } from "react-icons/md";
 const ThemeToggler = () => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
     setMounted(true);
-    const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const initialTheme = darkModeQuery.matches ? "dark" : "light";
-    setTheme(initialTheme);
+    const localTheme = localStorage.getItem("theme");
+    if (localTheme) {
+      setTheme(localTheme);
+    } else {
+      const darkModeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      const initialTheme = darkModeQuery.matches ? "dark" : "light";
+      setTheme(initialTheme);
+    }
   }, [setTheme]);
+
+  useEffect(() => {
+    if (mounted) {
+      localStorage.setItem("theme", theme ?? "light");
+    }
+  }, [mounted, theme]);
 
   if (!mounted) return null;
 

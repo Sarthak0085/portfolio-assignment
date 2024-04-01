@@ -14,11 +14,11 @@ import useFetchData from "@/hooks/useFetchData";
 import { userData } from "@/utils/types";
 
 export default function Home() {
-  const { loading, error, data, isMounted } = useFetchData<userData>();
+  const { loading, error, data } = useFetchData<userData>();
 
-  if (!isMounted) {
-    return null;
-  }
+  // if (!isMounted) {
+  //   return null;
+  // }
 
   return loading ? (
     <Loader />

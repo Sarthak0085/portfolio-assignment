@@ -9,9 +9,9 @@ import { userData } from "@/utils/types";
 const SkillsPage = () => {
   const { loading, error, data, isMounted } = useFetchData<userData>();
 
-  if (!isMounted) {
-    return null;
-  }
+  // if (!isMounted) {
+  //   return null;
+  // }
 
   return loading ? (
     <Loader />

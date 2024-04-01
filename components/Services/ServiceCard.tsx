@@ -24,7 +24,7 @@ const ServiceCard = ({
         whileInView={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: "100%" }}
         transition={{ duration: 0.5, type: "keyframes", delay: delay }}
-        className="relative w-full max-w-lg mb-[2rem] h-80 rounded-lg "
+        className="relative flex items-center justify-center w-full max-w-lg mb-[2rem] h-80 rounded-lg "
       >
         <div
           className="absolute inset-0 bg-cover bg-center"

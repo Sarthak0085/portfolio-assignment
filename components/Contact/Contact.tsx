@@ -35,7 +35,7 @@ const Contact = ({ data }: { data: userData | null }) => {
             Let&apos;s Connect
           </div>
           <ContactForm />
-          <div className="text-[20px] font-medium text-black dark:text-white">
+          <div className="text-[20px] text-center mx-auto lg:mx-0 lg:text-start font-medium text-black dark:text-white">
             Mail{" "}
             <a
               href={`mailto:${data?.email}`}
@@ -44,13 +44,13 @@ const Contact = ({ data }: { data: userData | null }) => {
               {data?.email}
             </a>
           </div>
-          <div className="text-[20px] mt-5 font-medium text-black dark:text-white">
+          <div className="text-[20px] mt-5 text-center mx-auto  lg:mx-0 lg:text-start font-medium text-black dark:text-white">
             Address{" "}
             <span className="text-[#55e6a5] block !text-[20px]">
               {data?.about.address}
             </span>
           </div>
-          <div className="text-[20px] mt-5 font-medium text-black dark:text-white">
+          <div className="text-[20px] mt-5 text-center mx-auto lg:mx-0 lg:text-start font-medium text-black dark:text-white">
             Phone
             <a
               href={`tel:${data?.about?.phoneNumber}`}
@@ -59,7 +59,7 @@ const Contact = ({ data }: { data: userData | null }) => {
               {data?.about?.phoneNumber}
             </a>
           </div>
-          <div className="text-[20px] mt-5 font-medium text-black dark:text-white">
+          <div className="text-[20px] mt-5 text-center mx-auto lg:mx-0 lg:text-start font-medium text-black dark:text-white">
             Connect with me
             <div className="flex mt-2 items-center justify-center gap-4">
               {data?.social_handles

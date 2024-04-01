@@ -86,7 +86,7 @@ const MobileNavbar: React.FC<Props> = ({ data, nav, closeNav }) => {
     >
       <div className="flex flex-col items-center justify-center h-[100vh] w-[100vw]">
         <motion.button
-          className="cursor-pointer mb-[2rem] text-[25px] text-slate-500 dark:text-white font-bold"
+          className="cursor-pointer w-full mb-[2rem] p-[1rem] text-[25px] text-blue-500 border-b dark:border-white border-black dark:text-[#55e6a5] font-bold"
           onClick={() => handleLinkClick("/")}
           whileHover={{
             color: [

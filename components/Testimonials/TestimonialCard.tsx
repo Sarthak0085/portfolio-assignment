@@ -32,7 +32,7 @@ const TestimonialCard = ({
         delay: delay,
       }}
     >
-      <div className="block rounded-lg bg-white shadow-lg dark:bg-neutral-700 dark:shadow-black/30">
+      <div className="block rounded-lg bg-white shadow-lg mx-[2rem] dark:bg-neutral-700 dark:shadow-black/30">
         <div
           style={{ backgroundColor: `${colors[index % 5]}` }}
           className={`h-28 overflow-hidden rounded-t-lg `}
