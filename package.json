@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "set NODE_OPTIONS=--inspect && next dev",
-    "build": "set NODE_OPTIONS=--inspect; next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "check-memory-usage": "node check-memory-usage.ts"
+    "format": "prettier --write .",
+    "lint": "next lint"
   },
   "dependencies": {
     "@dotlottie/react-player": "^1.6.12",
@@ -30,6 +30,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
     "postcss": "^8",
+    "prettier": "^3.2.5",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }

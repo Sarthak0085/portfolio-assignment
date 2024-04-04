@@ -1,16 +1,15 @@
-import Heading from "@/utils/heading";
-import { userData } from "@/utils/types";
-import ServiceCard from "./ServiceCard";
-import { motion } from "framer-motion";
+import { userData } from '@/utils/types';
+import { motion } from 'framer-motion';
+import ServiceCard from './ServiceCard';
 
 const Services = ({ data }: { data: userData | null }) => {
   return (
     <section className="text-white/75 dark:bg-[#02050a] min-h-[100vh] pt-[4rem]  pb-[4rem]">
       <motion.h2
-        initial={{ opacity: 0, y: "100%" }}
+        initial={{ opacity: 0, y: '100%' }}
         whileInView={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: "100%" }}
-        transition={{ duration: 0.5, type: "spring", delay: 0.3 }}
+        exit={{ opacity: 0, y: '100%' }}
+        transition={{ duration: 0.5, type: 'spring', delay: 0.3 }}
         className="heading"
       >
         Ser<span className="text-orange-400">vices</span>

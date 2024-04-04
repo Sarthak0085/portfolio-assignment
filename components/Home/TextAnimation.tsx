@@ -1,19 +1,18 @@
-"use client";
-import { userData } from "@/utils/types";
-import { TypeAnimation } from "react-type-animation";
+'use client';
+import { userData } from '@/utils/types';
+import { TypeAnimation } from 'react-type-animation';
 
 const TextAnimation = ({ data }: { data: userData | null }) => {
   const textData = data?.about.subTitle.split(/, | and /);
-  const newArray = textData?.flatMap((element) => [element, 2000]) as string[];
 
   return (
     <TypeAnimation
       sequence={[
-        "3D Visuals",
+        '3D Visuals',
         2000,
-        "user interfaces",
+        'user interfaces',
         2000,
-        "web applications",
+        'web applications',
       ]}
       wrapper="span"
       speed={50}

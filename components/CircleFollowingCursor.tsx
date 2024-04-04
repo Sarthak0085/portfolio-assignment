@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const CircleFollowingCursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -10,10 +10,10 @@ const CircleFollowingCursor = () => {
       setMousePosition({ x: event.clientX, y: event.clientY });
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
@@ -30,9 +30,9 @@ const CircleFollowingCursor = () => {
       style={{
         left: mousePosition.x - 20,
         top: mousePosition.y - 20,
-        transform: "translate(-50%, -50%)",
-        background: isClicked ? "#55e6a5" : "",
-        pointerEvents: "none",
+        transform: 'translate(-50%, -50%)',
+        background: isClicked ? '#55e6a5' : '',
+        pointerEvents: 'none',
       }}
       onClick={handleClick}
       whileTap={{ scale: 0.9 }}

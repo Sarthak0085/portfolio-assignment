@@ -1,13 +1,13 @@
-"use client";
-import emailjs from "@emailjs/browser";
-import { useRef, useState } from "react";
-import toast from "react-hot-toast";
+'use client';
+import emailjs from '@emailjs/browser';
+import { useRef, useState } from 'react';
+import toast from 'react-hot-toast';
 
 const ContactForm = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [message, setMessage] = useState('');
 
   const form = useRef<HTMLFormElement>(null);
 
@@ -18,29 +18,29 @@ const ContactForm = () => {
     if (form.current) {
       emailjs
         .sendForm(
-          "service_rrjfi5q",
-          "template_f2a774j",
+          'service_rrjfi5q',
+          'template_f2a774j',
           form.current,
-          "el09ySEBlKxplT3io"
+          'el09ySEBlKxplT3io',
         )
         .then(
           function (response) {
-            console.log("SUCCESS!", response.status, response.text);
-            toast.success("Form Submitted Successfully");
+            console.log('SUCCESS!', response.status, response.text);
+            toast.success('Form Submitted Successfully');
           },
           function (error) {
-            console.log("FAILED...", error);
+            console.log('FAILED...', error);
             toast.error(
-              "Error while submitting the form. Please use another method"
+              'Error while submitting the form. Please use another method',
             );
-          }
+          },
         );
     }
 
-    setName("");
-    setEmail("");
-    setPhoneNumber("");
-    setMessage("");
+    setName('');
+    setEmail('');
+    setPhoneNumber('');
+    setMessage('');
   };
 
   return (

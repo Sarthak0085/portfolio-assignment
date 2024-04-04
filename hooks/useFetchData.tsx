@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 interface FetchDataResponse<T> {
   data: T | null;
@@ -17,7 +17,7 @@ const useFetchData = <T,>(): FetchDataResponse<T> => {
     try {
       const res = await fetch(process.env.NEXT_PUBLIC_SERVER_URL as string);
       if (!res.ok) {
-        throw new Error("Failed to fetch data");
+        throw new Error('Failed to fetch data');
       }
       const jsonData = await res.json();
       if (isMounted.current) {

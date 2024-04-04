@@ -1,7 +1,7 @@
-import Image from "next/image";
-import React from "react";
-import { FaQuoteLeft } from "react-icons/fa";
-import { motion } from "framer-motion";
+import Image from 'next/image';
+import React from 'react';
+import { FaQuoteLeft } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 interface ITestimonialCard {
   name: string;
@@ -20,15 +20,15 @@ const TestimonialCard = ({
   delay,
   index,
 }: ITestimonialCard) => {
-  const colors = ["#7FB3D5", "#98FF98", "#FFDAB9", "#E6E6FA", "#FFDB58"];
+  const colors = ['#7FB3D5', '#98FF98', '#FFDAB9', '#E6E6FA', '#FFDB58'];
   return (
     <motion.div
-      initial={{ opacity: 0, x: "-100%" }}
+      initial={{ opacity: 0, x: '-100%' }}
       whileInView={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: "-100%" }}
+      exit={{ opacity: 0, x: '-100%' }}
       transition={{
         duration: 0.5,
-        type: "keyframes",
+        type: 'keyframes',
         delay: delay,
       }}
     >

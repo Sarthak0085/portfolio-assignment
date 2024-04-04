@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 interface IServiceCard {
   enabled: boolean;
@@ -20,10 +20,10 @@ const ServiceCard = ({
   return (
     enabled === true && (
       <motion.div
-        initial={{ opacity: 0, y: "100%" }}
+        initial={{ opacity: 0, y: '100%' }}
         whileInView={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: "100%" }}
-        transition={{ duration: 0.5, type: "keyframes", delay: delay }}
+        exit={{ opacity: 0, y: '100%' }}
+        transition={{ duration: 0.5, type: 'keyframes', delay: delay }}
         className="relative flex items-center justify-center w-full max-w-lg mb-[2rem] h-80 rounded-lg "
       >
         <div

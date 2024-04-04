@@ -1,16 +1,16 @@
-import { userData } from "@/utils/types";
-import { motion } from "framer-motion";
-import ProjectCard from "./ProjectCard";
+import { userData } from '@/utils/types';
+import { motion } from 'framer-motion';
+import ProjectCard from './ProjectCard';
 
 const Projects = ({ data }: { data: userData | null }) => {
   return (
     <>
       <section className="bg-slate-100 dark:bg-[#02050a] pt-[2rem] md:pt-[4rem] pb-[4rem]">
         <motion.h2
-          initial={{ opacity: 0, y: "100%" }}
+          initial={{ opacity: 0, y: '100%' }}
           whileInView={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: "100%" }}
-          transition={{ duration: 0.5, type: "spring", delay: 0.3 }}
+          exit={{ opacity: 0, y: '100%' }}
+          transition={{ duration: 0.5, type: 'spring', delay: 0.3 }}
           className="heading"
         >
           Pro<span className="text-orange-400">jects</span>

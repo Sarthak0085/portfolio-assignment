@@ -1,25 +1,25 @@
-"use client";
-import { userData } from "@/utils/types";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { FaServicestack } from "react-icons/fa";
-import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa6";
-import { IoIosContact } from "react-icons/io";
-import TextAnimation from "./TextAnimation";
+'use client';
+import { userData } from '@/utils/types';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { FaServicestack } from 'react-icons/fa';
+import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa6';
+import { IoIosContact } from 'react-icons/io';
+import TextAnimation from './TextAnimation';
 
 const Hero = ({ data }: { data: userData | null }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [colors, setColors] = useState([
-    "#FF7F50",
-    "#40E0D0",
-    "#FF69B4",
-    "#9370DB",
-    "#FFA500",
-    "#20B2AA",
+    '#FF7F50',
+    '#40E0D0',
+    '#FF69B4',
+    '#9370DB',
+    '#FFA500',
+    '#20B2AA',
   ]);
-  const textArray = data?.about?.quote?.split(" ") as string[];
+  const textArray = data?.about?.quote?.split(' ') as string[];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,10 +32,10 @@ const Hero = ({ data }: { data: userData | null }) => {
   return (
     <section>
       <motion.h2
-        initial={{ opacity: 0, y: "100%" }}
+        initial={{ opacity: 0, y: '100%' }}
         whileInView={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: "100%" }}
-        transition={{ duration: 0.5, type: "spring", delay: 0.5 }}
+        exit={{ opacity: 0, y: '100%' }}
+        transition={{ duration: 0.5, type: 'spring', delay: 0.5 }}
         className="heading my-[3rem]"
       >
         <FaQuoteLeft
@@ -48,7 +48,7 @@ const Hero = ({ data }: { data: userData | null }) => {
             initial={{ opacity: 0 }}
             animate={{
               opacity: index === currentIndex ? 1 : 0.2,
-              filter: index === currentIndex ? "none" : "blur(2px)",
+              filter: index === currentIndex ? 'none' : 'blur(2px)',
             }}
             transition={{ duration: 0.7 }}
             style={{ color: colors[currentIndex] }}
@@ -80,14 +80,14 @@ const Hero = ({ data }: { data: userData | null }) => {
           >
             <p>Video not available or Invalid url</p>
           </div>
-        )
+        ),
       )}
       <div className="w-[80%] my-[4rem] 1150px:w-[90%] gap-4 flex flex-col-reverse 1150px:flex-row items-center justify-between mx-auto">
         <motion.div
-          initial={{ x: "-100%" }}
+          initial={{ x: '-100%' }}
           whileInView={{ x: 0 }}
-          exit={{ x: "-100%" }}
-          transition={{ duration: 0.5, type: "keyframes", delay: 0.5 }}
+          exit={{ x: '-100%' }}
+          transition={{ duration: 0.5, type: 'keyframes', delay: 0.5 }}
           className="1150px:w-[50%] w-[80%] mx-auto text-[1.5rem] md:text-[2rem]"
         >
           <h2 className="text-[35px] md:text-[50px] mb-2 text-black dark:text-white font-bold flex-wrap">
@@ -152,7 +152,7 @@ const Hero = ({ data }: { data: userData | null }) => {
               <IoIosContact className="h-[1.7rem] w-[1.6rem] text-black" />
             </Link>
             <Link
-              href={"/services"}
+              href={'/services'}
               className="px-[2rem] gap-2 hover:bg-orange-400 transition-all duration-200 py-[1rem] text-[20px] font-bold
                               flex text-black bg-blue-200 justify-center"
             >
@@ -162,15 +162,15 @@ const Hero = ({ data }: { data: userData | null }) => {
           </div>
         </motion.div>
         <motion.div
-          initial={{ x: "100%" }}
+          initial={{ x: '100%' }}
           whileInView={{ x: 0 }}
-          exit={{ x: "100%" }}
-          transition={{ duration: 0.5, type: "keyframes", delay: 0.5 }}
+          exit={{ x: '100%' }}
+          transition={{ duration: 0.5, type: 'keyframes', delay: 0.5 }}
           className="w-[300px] h-[300px] md:w-[400px] mb-[2rem] md:h-[400px] 1150px:w-[500px] 1150px:h-[500px] shadow-2xl shadow-black dark:shadow-white relative 1150px:flex items-center rounded-full bg-black dark:bg-white"
         >
           <Image
-            src={data?.about.avatar.url ?? ""}
-            alt={data?.userName ?? "John Doe"}
+            src={data?.about.avatar.url ?? ''}
+            alt={data?.userName ?? 'John Doe'}
             layout="fill"
             className="object-cover rounded-full"
           />

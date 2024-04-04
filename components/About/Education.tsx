@@ -1,13 +1,13 @@
-import { userData } from "@/utils/types";
-import { motion, useScroll } from "framer-motion";
-import { MutableRefObject, useRef } from "react";
-import Details from "../shared/Details";
+import { userData } from '@/utils/types';
+import { motion, useScroll } from 'framer-motion';
+import { MutableRefObject, useRef } from 'react';
+import Details from '../shared/Details';
 
 const Education = ({ data }: { data: userData | null }) => {
   const ref: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "center start"],
+    offset: ['start end', 'center start'],
   });
   return (
     <div className="py-20">
@@ -22,7 +22,7 @@ const Education = ({ data }: { data: userData | null }) => {
         <ul>
           {data?.timeline
             ?.filter(
-              (item) => item.forEducation === true && item.enabled === true
+              (item) => item.forEducation === true && item.enabled === true,
             )
             .map((item, index: number) => (
               <Details

@@ -1,17 +1,17 @@
-"use client";
-import About from "@/components/About/About";
-import CircularText from "@/components/CircularText";
-import Contact from "@/components/Contact/Contact";
-import Experience from "@/components/Experience/Experience";
-import Hero from "@/components/Home/Hero";
-import Loader from "@/components/Loader";
-import Parallax from "@/components/Parallax/Parallax";
-import Projects from "@/components/Projects/Projects";
-import Services from "@/components/Services/Services";
-import Skills from "@/components/Skills/Skills";
-import Testimonials from "@/components/Testimonials/Testimonials";
-import useFetchData from "@/hooks/useFetchData";
-import { userData } from "@/utils/types";
+'use client';
+import About from '@/components/About/About';
+import CircularText from '@/components/CircularText';
+import Contact from '@/components/Contact/Contact';
+import Experience from '@/components/Experience/Experience';
+import Hero from '@/components/Home/Hero';
+import Loader from '@/components/Loader';
+import Parallax from '@/components/Parallax/Parallax';
+import Projects from '@/components/Projects/Projects';
+import Services from '@/components/Services/Services';
+import Skills from '@/components/Skills/Skills';
+import Testimonials from '@/components/Testimonials/Testimonials';
+import useFetchData from '@/hooks/useFetchData';
+import { userData } from '@/utils/types';
 
 export default function Home() {
   const { loading, error, data } = useFetchData<userData>();
@@ -24,7 +24,7 @@ export default function Home() {
     <Loader />
   ) : error ? (
     <div className="flex h-[100vh] items-center justify-center text-[red] text-4xl font-bold">
-      {error?.message ?? "There is an error while fetching the data."}
+      {error?.message ?? 'There is an error while fetching the data.'}
     </div>
   ) : (
     <div className="overflow-x-hidden">

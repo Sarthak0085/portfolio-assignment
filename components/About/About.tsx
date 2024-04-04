@@ -1,19 +1,19 @@
-"use client";
-import { userData } from "@/utils/types";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { CiMobile4 } from "react-icons/ci";
-import { MdOutlineEmail } from "react-icons/md";
-import Education from "./Education";
+'use client';
+import { userData } from '@/utils/types';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { CiMobile4 } from 'react-icons/ci';
+import { MdOutlineEmail } from 'react-icons/md';
+import Education from './Education';
 
 const About = ({ data }: { data: userData | null }) => {
   return (
     <section className="bg-slate-50 dark:bg-black pt-[2rem] pb-[2rem] md:pt-[4rem]">
       <motion.h2
-        initial={{ opacity: 0, y: "100%" }}
+        initial={{ opacity: 0, y: '100%' }}
         whileInView={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: "100%" }}
-        transition={{ duration: 0.5, type: "spring", delay: 0.3 }}
+        exit={{ opacity: 0, y: '100%' }}
+        transition={{ duration: 0.5, type: 'spring', delay: 0.3 }}
         className="heading pb-[4rem]"
       >
         About <span className="text-orange-400">Me</span>
@@ -21,14 +21,14 @@ const About = ({ data }: { data: userData | null }) => {
       <div className="grid grid-cols-1 lg:grid-cols-4 1350px:grid-cols-5 space-y-5 1150px:gap-4 mx-auto">
         <motion.div
           className="col-span-2 mx-auto mt-[2rem] flex flex-col items-center justify-center"
-          initial={{ opacity: 0, x: "-100%" }}
+          initial={{ opacity: 0, x: '-100%' }}
           whileInView={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: "-100%" }}
-          transition={{ duration: 0.5, type: "keyframes", delay: 0.5 }}
+          exit={{ opacity: 0, x: '-100%' }}
+          transition={{ duration: 0.5, type: 'keyframes', delay: 0.5 }}
         >
           <div className="1150px:h-[500px] 1150px:w-[500px] md:h-[400px] md:w-[400px] w-[300px] h-[300px] relative">
             <Image
-              src={data?.about?.alternateAvatars[0]?.url ?? ""}
+              src={data?.about?.alternateAvatars[0]?.url ?? ''}
               alt="users"
               layout="fill"
               className="relative w-[100%] rounded-2xl z-[100] object-cover"
@@ -52,19 +52,19 @@ const About = ({ data }: { data: userData | null }) => {
           </div>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, x: "100%" }}
+          initial={{ opacity: 0, x: '100%' }}
           whileInView={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: "100%" }}
-          transition={{ duration: 0.5, type: "keyframes", delay: 0.4 }}
+          exit={{ opacity: 0, x: '100%' }}
+          transition={{ duration: 0.5, type: 'keyframes', delay: 0.4 }}
           className="col-span-2 px-2 flex items-center w-[90%] 500px:w-[80%] lg:w-[100%] mx-auto  justify-center lg:justify-start flex-col"
         >
           <h2
             className="text-[25px] md:text-[35px] 1150px:text-[45px] leading-[2rem] md:leading-[3rem] capitalize 
             mb-[2rem] font-bold text-black dark:text-white"
           >
-            {data?.about?.name?.split(" ")[0]}&nbsp;
+            {data?.about?.name?.split(' ')[0]}&nbsp;
             <span className="text-orange-400">
-              {data?.about?.name?.split(" ")[1]}
+              {data?.about?.name?.split(' ')[1]}
             </span>
             <h4 className="text-[20px] inline pl-2 md:text-[25px] 1150px:text-[35px]">
               ({data?.about?.title})
@@ -105,10 +105,10 @@ const About = ({ data }: { data: userData | null }) => {
           </div>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, x: "100%" }}
+          initial={{ opacity: 0, x: '100%' }}
           whileInView={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: "100%" }}
-          transition={{ duration: 0.5, type: "keyframes", delay: 0.5 }}
+          exit={{ opacity: 0, x: '100%' }}
+          transition={{ duration: 0.5, type: 'keyframes', delay: 0.5 }}
           className="hidden 1350px:col-span-1 1350px:flex flex-col items-center justify-evenly pr-2"
         >
           <div className="flex flex-col items-center justify-center">

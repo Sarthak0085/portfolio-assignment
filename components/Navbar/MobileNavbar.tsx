@@ -1,10 +1,10 @@
-"use client";
-import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import { IoMdClose } from "react-icons/io";
-import ThemeToggler from "../ThemeToggler";
-import { userData } from "@/utils/types";
-import { motion } from "framer-motion";
+'use client';
+import { usePathname, useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { IoMdClose } from 'react-icons/io';
+import ThemeToggler from '../ThemeToggler';
+import { userData } from '@/utils/types';
+import { motion } from 'framer-motion';
 
 interface Props {
   nav: boolean;
@@ -13,7 +13,7 @@ interface Props {
 }
 
 const MobileNavbar: React.FC<Props> = ({ data, nav, closeNav }) => {
-  const navAnimation = nav ? "translate-x-0" : "translate-x-[-100%]";
+  const navAnimation = nav ? 'translate-x-0' : 'translate-x-[-100%]';
 
   const pathname = usePathname();
   const router = useRouter();
@@ -32,13 +32,13 @@ const MobileNavbar: React.FC<Props> = ({ data, nav, closeNav }) => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = [
-        { id: "home", path: "/" },
-        { id: "about", path: "/about" },
-        { id: "contact", path: "/contact" },
-        { id: "testimonials", path: "/testimonials" },
-        { id: "skills", path: "/skills" },
-        { id: "services", path: "/services" },
-        { id: "portfolio", path: "/portfolio" },
+        { id: 'home', path: '/' },
+        { id: 'about', path: '/about' },
+        { id: 'contact', path: '/contact' },
+        { id: 'testimonials', path: '/testimonials' },
+        { id: 'skills', path: '/skills' },
+        { id: 'services', path: '/services' },
+        { id: 'portfolio', path: '/portfolio' },
       ];
 
       for (const section of sections) {
@@ -47,31 +47,31 @@ const MobileNavbar: React.FC<Props> = ({ data, nav, closeNav }) => {
           const rect = element.getBoundingClientRect();
           if (rect.top <= 0 && rect.bottom >= 0) {
             setActiveLink(section.path);
-            window.history.replaceState(null, "", section.path);
+            window.history.replaceState(null, '', section.path);
             return;
           }
         }
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   useEffect(() => {
     const updateTitleDescriptionKeywords = () => {
-      const title = `Portfolio-${data ? data?.about.name : "John Doe"} ${
-        activeLink.substring(1) !== "" ? "|" + activeLink.substring(1) : ""
+      const title = `Portfolio-${data ? data?.about.name : 'John Doe'} ${
+        activeLink.substring(1) !== '' ? '|' + activeLink.substring(1) : ''
       }`;
       const description =
-        pathname === "/"
+        pathname === '/'
           ? `This page shows the ${data?.about.name} Portfolio Home page`
           : `This page shows the ${
               data?.about.name
             } Portfolio's ${activeLink.substring(1)} page`;
-      const keywords = "Nextjs, react, framer-motion";
+      const keywords = 'Nextjs, react, framer-motion';
 
       return { title, description, keywords };
     };
@@ -87,32 +87,32 @@ const MobileNavbar: React.FC<Props> = ({ data, nav, closeNav }) => {
       <div className="flex flex-col items-center justify-center h-[100vh] w-[100vw]">
         <motion.button
           className="cursor-pointer w-[80%] mb-[2rem] p-[1rem] text-[25px] text-blue-500 border-b dark:border-white border-black dark:text-[#55e6a5] font-bold"
-          onClick={() => handleLinkClick("/")}
+          onClick={() => handleLinkClick('/')}
           whileHover={{
             color: [
-              "rgba(127, 255, 212, 1)", // Aquamarine
-              "rgba(218, 112, 214, 1)", // Orchid
-              "rgba(255, 105, 180, 1)", // Hot Pink
-              "rgba(255, 215, 0, 1)", // Gold
-              "rgba(70, 130, 180, 1)", // Steel Blue
-              "rgba(255, 140, 0, 1)", // Dark Orange
-              "rgba(0, 255, 127, 1)", // Spring Green
-              "rgba(240, 128, 128, 1)", // Light Coral
-              "rgba(154, 205, 50, 1)", // Yellow Green
-              "rgba(240, 230, 140, 1)", // Khaki
+              'rgba(127, 255, 212, 1)', // Aquamarine
+              'rgba(218, 112, 214, 1)', // Orchid
+              'rgba(255, 105, 180, 1)', // Hot Pink
+              'rgba(255, 215, 0, 1)', // Gold
+              'rgba(70, 130, 180, 1)', // Steel Blue
+              'rgba(255, 140, 0, 1)', // Dark Orange
+              'rgba(0, 255, 127, 1)', // Spring Green
+              'rgba(240, 128, 128, 1)', // Light Coral
+              'rgba(154, 205, 50, 1)', // Yellow Green
+              'rgba(240, 230, 140, 1)', // Khaki
             ],
             transition: { duration: 1.5, repeat: Infinity },
           }}
         >
-          {data?.about.name.split(" ")[0]}&nbsp;
-          {data?.about.name.split(" ")[1]}
+          {data?.about.name.split(' ')[0]}&nbsp;
+          {data?.about.name.split(' ')[1]}
         </motion.button>
         <button
           className={`nav-link-mobile ${
-            activeLink === "/" ? "active-mobile" : ""
+            activeLink === '/' ? 'active-mobile' : ''
           }`}
           onClick={() => {
-            handleLinkClick("/");
+            handleLinkClick('/');
             closeNav();
           }}
         >
@@ -120,10 +120,10 @@ const MobileNavbar: React.FC<Props> = ({ data, nav, closeNav }) => {
         </button>
         <button
           className={`nav-link-mobile ${
-            activeLink === "/about" ? "active-mobile" : ""
+            activeLink === '/about' ? 'active-mobile' : ''
           }`}
           onClick={() => {
-            handleLinkClick("/about");
+            handleLinkClick('/about');
             closeNav();
           }}
         >
@@ -131,10 +131,10 @@ const MobileNavbar: React.FC<Props> = ({ data, nav, closeNav }) => {
         </button>
         <button
           className={`nav-link-mobile ${
-            activeLink === "/skills" ? "active-mobile" : ""
+            activeLink === '/skills' ? 'active-mobile' : ''
           }`}
           onClick={() => {
-            handleLinkClick("/skills");
+            handleLinkClick('/skills');
             closeNav();
           }}
         >
@@ -142,10 +142,10 @@ const MobileNavbar: React.FC<Props> = ({ data, nav, closeNav }) => {
         </button>
         <button
           className={`nav-link-mobile ${
-            activeLink === "/services" ? "active-mobile" : ""
+            activeLink === '/services' ? 'active-mobile' : ''
           }`}
           onClick={() => {
-            handleLinkClick("/services");
+            handleLinkClick('/services');
             closeNav();
           }}
         >
@@ -153,10 +153,10 @@ const MobileNavbar: React.FC<Props> = ({ data, nav, closeNav }) => {
         </button>
         <button
           className={`nav-link-mobile ${
-            activeLink === "/portfolio" ? "active-mobile" : ""
+            activeLink === '/portfolio' ? 'active-mobile' : ''
           }`}
           onClick={() => {
-            handleLinkClick("/portfolio");
+            handleLinkClick('/portfolio');
             closeNav();
           }}
         >
@@ -164,10 +164,10 @@ const MobileNavbar: React.FC<Props> = ({ data, nav, closeNav }) => {
         </button>
         <button
           className={`nav-link-mobile ${
-            activeLink === "/testimonials" ? "active-mobile" : ""
+            activeLink === '/testimonials' ? 'active-mobile' : ''
           }`}
           onClick={() => {
-            handleLinkClick("/testimonials");
+            handleLinkClick('/testimonials');
             closeNav !== undefined && closeNav();
           }}
         >
@@ -175,10 +175,10 @@ const MobileNavbar: React.FC<Props> = ({ data, nav, closeNav }) => {
         </button>
         <button
           className={`nav-link-mobile ${
-            activeLink === "/contact" ? "active-mobile" : ""
+            activeLink === '/contact' ? 'active-mobile' : ''
           }`}
           onClick={() => {
-            handleLinkClick("/contact");
+            handleLinkClick('/contact');
             closeNav();
           }}
         >

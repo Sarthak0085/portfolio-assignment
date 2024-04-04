@@ -1,6 +1,6 @@
-import { MutableRefObject, useRef } from "react";
-import { motion } from "framer-motion";
-import LiIcon from "./LiIcon";
+import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import LiIcon from './LiIcon';
 
 interface IDetails {
   position: string;
@@ -26,10 +26,10 @@ const Details = ({
   const formattedDate = (date: string) => {
     const initialDate = date.slice(0, 10);
     const newDate = new Date(initialDate);
-    const formattedDate = newDate.toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "short",
-      year: "2-digit",
+    const formattedDate = newDate.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: '2-digit',
     });
     return formattedDate;
   };
@@ -43,7 +43,7 @@ const Details = ({
       <motion.div
         initial={{ y: 50 }}
         whileInView={{ y: 0 }}
-        transition={{ duration: 0.5, type: "spring" }}
+        transition={{ duration: 0.5, type: 'spring' }}
       >
         <h3 className="capitalize font-bold text-2xl">
           {position}&nbsp;
@@ -59,7 +59,7 @@ const Details = ({
           key Points
           {points.map((p, index: number) => (
             <li key={index} className="font-medium w-full">
-              {p !== "" && <span className="text-[20px]">&#x2022;&nbsp;</span>}
+              {p !== '' && <span className="text-[20px]">&#x2022;&nbsp;</span>}
               {p}
             </li>
           ))}

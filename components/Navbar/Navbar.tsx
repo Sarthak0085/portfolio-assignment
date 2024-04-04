@@ -1,11 +1,11 @@
-"use client";
-import Heading from "@/utils/heading";
-import { userData } from "@/utils/types";
-import { motion } from "framer-motion";
-import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import { FaBars } from "react-icons/fa";
-import ThemeToggler from "../ThemeToggler";
+'use client';
+import Heading from '@/utils/heading';
+import { userData } from '@/utils/types';
+import { motion } from 'framer-motion';
+import { usePathname, useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { FaBars } from 'react-icons/fa';
+import ThemeToggler from '../ThemeToggler';
 
 interface Props {
   openNav: () => void;
@@ -31,13 +31,13 @@ const Navbar: React.FC<Props> = ({ data, openNav }) => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = [
-        { id: "home", path: "/" },
-        { id: "about", path: "/about" },
-        { id: "contact", path: "/contact" },
-        { id: "testimonials", path: "/testimonials" },
-        { id: "skills", path: "/skills" },
-        { id: "services", path: "/services" },
-        { id: "portfolio", path: "/portfolio" },
+        { id: 'home', path: '/' },
+        { id: 'about', path: '/about' },
+        { id: 'contact', path: '/contact' },
+        { id: 'testimonials', path: '/testimonials' },
+        { id: 'skills', path: '/skills' },
+        { id: 'services', path: '/services' },
+        { id: 'portfolio', path: '/portfolio' },
       ];
 
       for (const section of sections) {
@@ -46,31 +46,31 @@ const Navbar: React.FC<Props> = ({ data, openNav }) => {
           const rect = element.getBoundingClientRect();
           if (rect.top <= 0 && rect.bottom >= 0) {
             setActiveLink(section.path);
-            window.history.replaceState(null, "", section.path);
+            window.history.replaceState(null, '', section.path);
             return;
           }
         }
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   useEffect(() => {
     const updateTitleDescriptionKeywords = () => {
-      const title = `Portfolio-${data ? data?.about.name : "John Doe"} ${
-        activeLink.substring(1) !== "" ? "| " + activeLink.substring(1) : ""
+      const title = `Portfolio-${data ? data?.about.name : 'John Doe'} ${
+        activeLink.substring(1) !== '' ? '| ' + activeLink.substring(1) : ''
       }`;
       const description =
-        activeLink === "/"
+        activeLink === '/'
           ? `This page shows the ${data?.about.name} Portfolio Home page`
           : `This page shows the ${
               data?.about.name
             } Portfolio's ${activeLink.substring(1)} page`;
-      const keywords = "Nextjs, react, framer-motion";
+      const keywords = 'Nextjs, react, framer-motion';
 
       return { title, description, keywords };
     };
@@ -90,74 +90,74 @@ const Navbar: React.FC<Props> = ({ data, openNav }) => {
         <div className="flex items-center justify-between w-[80%] mx-auto h-[100%]">
           <motion.button
             className="cursor-pointer text-[25px] text-slate-500 dark:text-white font-bold"
-            onClick={() => handleLinkClick("/")}
+            onClick={() => handleLinkClick('/')}
             whileHover={{
               color: [
-                "rgba(127, 255, 212, 1)", // Aquamarine
-                "rgba(218, 112, 214, 1)", // Orchid
-                "rgba(255, 105, 180, 1)", // Hot Pink
-                "rgba(255, 215, 0, 1)", // Gold
-                "rgba(70, 130, 180, 1)", // Steel Blue
-                "rgba(255, 140, 0, 1)", // Dark Orange
-                "rgba(0, 255, 127, 1)", // Spring Green
-                "rgba(240, 128, 128, 1)", // Light Coral
-                "rgba(154, 205, 50, 1)", // Yellow Green
-                "rgba(240, 230, 140, 1)", // Khaki
+                'rgba(127, 255, 212, 1)', // Aquamarine
+                'rgba(218, 112, 214, 1)', // Orchid
+                'rgba(255, 105, 180, 1)', // Hot Pink
+                'rgba(255, 215, 0, 1)', // Gold
+                'rgba(70, 130, 180, 1)', // Steel Blue
+                'rgba(255, 140, 0, 1)', // Dark Orange
+                'rgba(0, 255, 127, 1)', // Spring Green
+                'rgba(240, 128, 128, 1)', // Light Coral
+                'rgba(154, 205, 50, 1)', // Yellow Green
+                'rgba(240, 230, 140, 1)', // Khaki
               ],
               transition: { duration: 1.5, repeat: Infinity },
             }}
           >
-            {data?.about.name.split(" ")[0]}&nbsp;
-            {data?.about.name.split(" ")[1]}
+            {data?.about.name.split(' ')[0]}&nbsp;
+            {data?.about.name.split(' ')[1]}
           </motion.button>
           <div className="flex w-[70%] lg:gap-6 1350px:gap-7 items-center justify-evenly">
             <button
-              className={`nav-link ${activeLink === "/" ? "active" : ""}`}
-              onClick={() => handleLinkClick("/")}
+              className={`nav-link ${activeLink === '/' ? 'active' : ''}`}
+              onClick={() => handleLinkClick('/')}
             >
               Home
             </button>
             <button
-              className={`nav-link ${activeLink === "/about" ? "active" : ""}`}
-              onClick={() => handleLinkClick("/about")}
+              className={`nav-link ${activeLink === '/about' ? 'active' : ''}`}
+              onClick={() => handleLinkClick('/about')}
             >
               About
             </button>
             <button
-              className={`nav-link ${activeLink === "/skills" ? "active" : ""}`}
-              onClick={() => handleLinkClick("/skills")}
+              className={`nav-link ${activeLink === '/skills' ? 'active' : ''}`}
+              onClick={() => handleLinkClick('/skills')}
             >
               Skills
             </button>
             <button
               className={`nav-link ${
-                activeLink === "/services" ? "active" : ""
+                activeLink === '/services' ? 'active' : ''
               }`}
-              onClick={() => handleLinkClick("/services")}
+              onClick={() => handleLinkClick('/services')}
             >
               Services
             </button>
             <button
               className={`nav-link ${
-                activeLink === "/portfolio" ? "active" : ""
+                activeLink === '/portfolio' ? 'active' : ''
               }`}
-              onClick={() => handleLinkClick("/portfolio")}
+              onClick={() => handleLinkClick('/portfolio')}
             >
               Portfolio
             </button>
             <button
               className={`nav-link ${
-                activeLink === "/testimonials" ? "active" : ""
+                activeLink === '/testimonials' ? 'active' : ''
               }`}
-              onClick={() => handleLinkClick("/testimonials")}
+              onClick={() => handleLinkClick('/testimonials')}
             >
               Testimonials
             </button>
             <button
               className={`nav-link ${
-                activeLink === "/contact" ? "active" : ""
+                activeLink === '/contact' ? 'active' : ''
               }`}
-              onClick={() => handleLinkClick("/contact")}
+              onClick={() => handleLinkClick('/contact')}
             >
               Contact
             </button>

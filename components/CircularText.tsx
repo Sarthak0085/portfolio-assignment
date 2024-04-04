@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 const CircularText = () => {
   const [outerCoordinates, setOuterCoordinates] = useState<
@@ -8,8 +8,8 @@ const CircularText = () => {
   const [innerCoordinates, setInnerCoordinates] = useState<
     { x: number; y: number }[]
   >([]);
-  const outerCharacters = "SOFTWARE DEVELOPER • REACT DEVELOPER • ";
-  const innerCharacters = "YEARS OF EXPERIENCE ";
+  const outerCharacters = 'SOFTWARE DEVELOPER • REACT DEVELOPER • ';
+  const innerCharacters = 'YEARS OF EXPERIENCE ';
   const outerRadius = 60;
   const innerRadius = 30;
   const center = { x: 60, y: 60 };
@@ -40,7 +40,7 @@ const CircularText = () => {
   return (
     <motion.div
       animate={{ rotate: 360 }}
-      transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
+      transition={{ repeat: Infinity, duration: 10, ease: 'linear' }}
       className="fixed bottom-6 z-[10] left-6 w-[120px] h-[120px]"
     >
       {outerCoordinates.map((point, index) => (
@@ -75,7 +75,7 @@ const CircularText = () => {
       ))}
       <motion.span
         animate={{ rotate: -360 }}
-        transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
+        transition={{ repeat: Infinity, duration: 10, ease: 'linear' }}
         className="absolute inset-0 text-[#55e6a5] text-2xl flex justify-center items-center"
       >
         5

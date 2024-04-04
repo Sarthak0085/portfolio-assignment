@@ -1,8 +1,8 @@
-"use client";
-import ProjectDetails from "@/components/ProjectDetails/ProjectDetails";
-import Heading from "@/utils/heading";
-import { useSearchParams } from "next/navigation";
-import React from "react";
+'use client';
+import ProjectDetails from '@/components/ProjectDetails/ProjectDetails';
+import Heading from '@/utils/heading';
+import { useSearchParams } from 'next/navigation';
+import React from 'react';
 
 type Props = {
   params: any;
@@ -13,12 +13,12 @@ const page: React.FC<Props> = ({ params }) => {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const searchParams = useSearchParams();
-  const image = searchParams.get("image");
-  const description = searchParams.get("description");
-  const github = searchParams.get("github");
-  const live = searchParams.get("live");
-  const techStack = searchParams.get("techStack");
-  console.log("search :", github, live, techStack);
+  const image = searchParams.get('image');
+  const description = searchParams.get('description');
+  const github = searchParams.get('github');
+  const live = searchParams.get('live');
+  const techStack = searchParams.get('techStack');
+  console.log('search :', github, live, techStack);
 
   return (
     <div className="overflow-x-hidden">

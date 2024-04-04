@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 const Loader = () => {
   return (
@@ -17,12 +17,12 @@ const Loader = () => {
               className="w-8 h-8 rounded-full mx-1"
               style={{ originX: 0.5, originY: 0.5 }}
               animate={{
-                backgroundColor: ["#fcbf1f", "#f472b6", "#60a5fa"],
+                backgroundColor: ['#fcbf1f', '#f472b6', '#60a5fa'],
                 y: [0, 20, 0],
               }}
               transition={{
                 repeat: Infinity,
-                repeatType: "mirror",
+                repeatType: 'mirror',
                 delay: index * 0.08,
                 duration: 0.8,
               }}

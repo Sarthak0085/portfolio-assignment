@@ -1,10 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { FaGithub } from "react-icons/fa";
-import { FaArrowRightLong } from "react-icons/fa6";
-import { MdArrowOutward } from "react-icons/md";
-import { motion } from "framer-motion";
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import { FaGithub } from 'react-icons/fa';
+import { FaArrowRightLong } from 'react-icons/fa6';
+import { MdArrowOutward } from 'react-icons/md';
+import { motion } from 'framer-motion';
 
 interface ProjectProps {
   title: string;
@@ -29,19 +29,19 @@ const ProjectCard: React.FC<ProjectProps> = ({
 }) => {
   const encodedGithubLink = encodeURIComponent(githubLink);
   const encodedLiveLink = encodeURIComponent(LiveLink);
-  const encodedTechStack = encodeURIComponent(techStack.join(","));
+  const encodedTechStack = encodeURIComponent(techStack.join(','));
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: "100%" }}
+      initial={{ opacity: 0, x: '100%' }}
       whileInView={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: "100%" }}
-      transition={{ duration: 0.5, type: "keyframes", delay: delay }}
+      exit={{ opacity: 0, x: '100%' }}
+      transition={{ duration: 0.5, type: 'keyframes', delay: delay }}
       className="border rounded-lg cursor-pointer relative bg-blue-50 dark:bg-slate-900 border-slate-500 hover:scale-110 transition-all duration-200"
     >
       <Link
         href={`/project/${encodeURIComponent(
-          title
+          title,
         )}?image=${src}&description=${description}&github=${encodedGithubLink}&live=${encodedLiveLink}&techStack=${encodedTechStack}`}
       >
         <div
@@ -74,7 +74,7 @@ const ProjectCard: React.FC<ProjectProps> = ({
             </Link>
           ) : (
             <p className="flex items-center col-span-12 justify-center text-[#f0b666] ">
-              {" "}
+              {' '}
               Currently Working....
             </p>
           )}

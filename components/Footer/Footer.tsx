@@ -1,7 +1,7 @@
-import { userData } from "@/utils/types";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import { userData } from '@/utils/types';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 
 const Footer = ({ data }: { data: userData | null }) => {
   return (
@@ -11,7 +11,7 @@ const Footer = ({ data }: { data: userData | null }) => {
           <span>{new Date().getFullYear()}&copy; All Rights Reserved.</span>
         </div>
         <div>
-          Build With <span className="text-2xl">&#129505;</span>{" "}
+          Build With <span className="text-2xl">&#129505;</span>{' '}
           {data?.about.name}
         </div>
         <div className="flex items-center justify-center gap-4">

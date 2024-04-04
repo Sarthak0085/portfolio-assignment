@@ -1,5 +1,5 @@
-import { motion, useScroll } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useScroll } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 const StarIndicator = () => {
   const { scrollYProgress } = useScroll();
@@ -25,13 +25,13 @@ const StarIndicator = () => {
           stroke="#ccc"
           style={{
             pathLength: scrollYProgress,
-            stroke: "#55e6a5",
+            stroke: '#55e6a5',
           }}
         />
       </motion.svg>
       <div
         className={`absolute inset-0 flex items-center justify-center text-[14px] md:text-[16px] font-bold ${
-          isTextVisible ? "text-[#55e6a5]" : "text-transparent"
+          isTextVisible ? 'text-[#55e6a5]' : 'text-transparent'
         }`}
       >
         {Math.round(percentage)}%

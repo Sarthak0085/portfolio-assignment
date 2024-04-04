@@ -1,20 +1,20 @@
-"use client";
-import CircleFollowingCursor from "@/components/CircleFollowingCursor";
-import Footer from "@/components/Footer/Footer";
-import Loader from "@/components/Loader";
-import MobileNavbar from "@/components/Navbar/MobileNavbar";
-import Navbar from "@/components/Navbar/Navbar";
-import StarIndicator from "@/components/StarIndicator";
-import useFetchData from "@/hooks/useFetchData";
-import { userData } from "@/utils/types";
-import { ThemeProvider } from "next-themes";
-import { Poppins } from "next/font/google";
-import { useState } from "react";
-import { Toaster } from "react-hot-toast";
-import "./globals.css";
-import CircularText from "@/components/CircularText";
+'use client';
+import CircleFollowingCursor from '@/components/CircleFollowingCursor';
+import Footer from '@/components/Footer/Footer';
+import Loader from '@/components/Loader';
+import MobileNavbar from '@/components/Navbar/MobileNavbar';
+import Navbar from '@/components/Navbar/Navbar';
+import StarIndicator from '@/components/StarIndicator';
+import useFetchData from '@/hooks/useFetchData';
+import { userData } from '@/utils/types';
+import { ThemeProvider } from 'next-themes';
+import { Poppins } from 'next/font/google';
+import { useState } from 'react';
+import { Toaster } from 'react-hot-toast';
+import './globals.css';
+import CircularText from '@/components/CircularText';
 
-const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "700"] });
+const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '700'] });
 
 export default function RootLayout({
   children,
@@ -40,7 +40,7 @@ export default function RootLayout({
             <Loader />
           ) : error ? (
             <div className="flex h-[100vh] items-center justify-center text-[red] text-5xl font-bold">
-              {error?.message ?? "There is an error while fetching the data."}
+              {error?.message ?? 'There is an error while fetching the data.'}
             </div>
           ) : (
             <>

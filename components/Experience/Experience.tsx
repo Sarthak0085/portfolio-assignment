@@ -1,16 +1,14 @@
-import useFetchData from "@/hooks/useFetchData";
-import { userData } from "@/utils/types";
-import { motion, useScroll } from "framer-motion";
-import { MutableRefObject, useRef } from "react";
-import Details from "../shared/Details";
-import Heading from "@/utils/heading";
+import { userData } from '@/utils/types';
+import { motion, useScroll } from 'framer-motion';
+import { MutableRefObject, useRef } from 'react';
+import Details from '../shared/Details';
 
 const Experience = ({ data }: { data: userData | null }) => {
   //   const { loading, error, data } = useFetchData<userData>();
   const ref: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "center start"],
+    offset: ['start end', 'center start'],
   });
   return (
     <>
@@ -26,7 +24,7 @@ const Experience = ({ data }: { data: userData | null }) => {
           <ul>
             {data?.timeline
               .filter(
-                (item) => item.forEducation === false && item.enabled === true
+                (item) => item.forEducation === false && item.enabled === true,
               )
               .map((item, index: number) => (
                 <Details

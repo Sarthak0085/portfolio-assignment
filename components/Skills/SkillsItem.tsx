@@ -1,6 +1,6 @@
-import Image from "next/image";
-import React from "react";
-import { motion } from "framer-motion";
+import Image from 'next/image';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 interface Props {
   skill: string;
@@ -27,7 +27,7 @@ const SkillsItem: React.FC<Props> = ({
         exit={{ opacity: 0 }}
         transition={{
           duration: 0.5,
-          type: "keyframes",
+          type: 'keyframes',
           delay: delay,
         }}
         className="flex flex-col sm:flex-row items-center gap-4"
@@ -55,16 +55,16 @@ const SkillsItem: React.FC<Props> = ({
                 transition={{ duration: 0.5 }}
                 whileHover={{
                   backgroundColor: [
-                    "rgba(127, 255, 212, 1)", // Aquamarine
-                    "rgba(218, 112, 214, 1)", // Orchid
-                    "rgba(255, 105, 180, 1)", // Hot Pink
-                    "rgba(255, 215, 0, 1)", // Gold
-                    "rgba(70, 130, 180, 1)", // Steel Blue
-                    "rgba(255, 140, 0, 1)", // Dark Orange
-                    "rgba(0, 255, 127, 1)", // Spring Green
-                    "rgba(240, 128, 128, 1)", // Light Coral
-                    "rgba(154, 205, 50, 1)", // Yellow Green
-                    "rgba(240, 230, 140, 1)", // Khaki
+                    'rgba(127, 255, 212, 1)', // Aquamarine
+                    'rgba(218, 112, 214, 1)', // Orchid
+                    'rgba(255, 105, 180, 1)', // Hot Pink
+                    'rgba(255, 215, 0, 1)', // Gold
+                    'rgba(70, 130, 180, 1)', // Steel Blue
+                    'rgba(255, 140, 0, 1)', // Dark Orange
+                    'rgba(0, 255, 127, 1)', // Spring Green
+                    'rgba(240, 128, 128, 1)', // Light Coral
+                    'rgba(154, 205, 50, 1)', // Yellow Green
+                    'rgba(240, 230, 140, 1)', // Khaki
                   ],
                   transition: { duration: 4, repeat: Infinity },
                 }}
