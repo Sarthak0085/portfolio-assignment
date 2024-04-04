@@ -1,6 +1,5 @@
 "use client";
 import About from "@/components/About/About";
-import CircularText from "@/components/CircularText";
 import Loader from "@/components/Loader";
 import Parallax from "@/components/Parallax/Parallax";
 import useFetchData from "@/hooks/useFetchData";

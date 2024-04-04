@@ -1,5 +1,4 @@
 "use client";
-import CircularText from "@/components/CircularText";
 import Contact from "@/components/Contact/Contact";
 import Loader from "@/components/Loader";
 import Parallax from "@/components/Parallax/Parallax";
@@ -7,11 +6,7 @@ import useFetchData from "@/hooks/useFetchData";
 import { userData } from "@/utils/types";
 
 const ContactPage = () => {
-  const { loading, error, data, isMounted } = useFetchData<userData>();
-
-  // if (!isMounted) {
-  //   return null;
-  // }
+  const { loading, error, data } = useFetchData<userData>();
 
   return loading ? (
     <Loader />

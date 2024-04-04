@@ -49,7 +49,7 @@ export default function RootLayout({
                 <Navbar data={data} openNav={openNav} />
               </div>
               <div>
-                {/* <CircularText /> */}
+                <CircularText />
                 <CircleFollowingCursor />
                 <StarIndicator />
                 {children}
