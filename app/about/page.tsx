@@ -7,7 +7,7 @@ import useFetchData from "@/hooks/useFetchData";
 import { userData } from "@/utils/types";
 
 const AboutPage = () => {
-  const { loading, error, data, isMounted } = useFetchData<userData>();
+  const { loading, error, data } = useFetchData<userData>();
 
   return loading ? (
     <Loader />
@@ -17,7 +17,6 @@ const AboutPage = () => {
     </div>
   ) : (
     <div className="overflow-x-hidden">
-      <CircularText />
       <Parallax type="about" />
       <About data={data} />
     </div>

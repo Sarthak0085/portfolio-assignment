@@ -22,7 +22,6 @@ const ProjectsPage = () => {
     </div>
   ) : (
     <div className="overflow-x-hidden">
-      <CircularText />
       <Parallax type="portfolio" />
       <Experience data={data} />
       <Projects data={data} />

@@ -28,7 +28,6 @@ export default function Home() {
     </div>
   ) : (
     <div className="overflow-x-hidden">
-      <CircularText />
       <Parallax type="home" />
       <Hero data={data} />
       <Parallax type="about" />

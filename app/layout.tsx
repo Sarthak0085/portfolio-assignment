@@ -12,6 +12,7 @@ import { Poppins } from "next/font/google";
 import { useState } from "react";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
+import CircularText from "@/components/CircularText";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
@@ -48,6 +49,7 @@ export default function RootLayout({
                 <Navbar data={data} openNav={openNav} />
               </div>
               <div>
+                {/* <CircularText /> */}
                 <CircleFollowingCursor />
                 <StarIndicator />
                 {children}

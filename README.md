@@ -2,6 +2,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+First, add .env in root folder and then add:
+
+NEXT_PUBLIC_SERVER_URL = `${your_url}`
+
 First, run the development server:
 
 ```bash

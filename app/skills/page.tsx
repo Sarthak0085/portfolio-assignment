@@ -21,7 +21,6 @@ const SkillsPage = () => {
     </div>
   ) : (
     <div className="overflow-x-hidden">
-      <CircularText />
       <Parallax type="skills" />
       <Skills data={data} />
     </div>

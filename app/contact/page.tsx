@@ -21,7 +21,6 @@ const ContactPage = () => {
     </div>
   ) : (
     <div className="overflow-x-hidden">
-      <CircularText />
       <Parallax type="contact" />
       <Contact data={data} />
     </div>

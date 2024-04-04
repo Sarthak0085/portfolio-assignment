@@ -21,7 +21,6 @@ const ServicesPage = () => {
     </div>
   ) : (
     <div className="">
-      <CircularText />
       <Parallax type="services" />
       <Services data={data} />
     </div>
