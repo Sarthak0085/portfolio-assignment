@@ -11,24 +11,14 @@ import React, { useEffect, useRef, useState } from 'react';
 
 const Parallax = ({ type }: { type: string }) => {
   const ref = useRef(null);
-  const screenWidth = useWindowSize();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end start'],
   });
-  const yBg = useSpring(
-    useTransform(
-      scrollYProgress,
-      [0, 1],
-      ['0%', screenWidth > 1024 ? '60%' : '60%'],
-    ),
-  );
+
+  const yBg = useSpring(useTransform(scrollYProgress, [0, 1], ['0%', '300%']));
   const yText = useSpring(
-    useTransform(
-      scrollYProgress,
-      [0, 1],
-      ['0%', screenWidth > 768 ? '250%' : screenWidth > 500 ? '100%' : '50%'],
-    ),
+    useTransform(scrollYProgress, [0, 1], ['0%', '500%']),
   );
 
   const [currentColor, setCurrentColor] = useState('#ffffff');
@@ -50,7 +40,7 @@ const Parallax = ({ type }: { type: string }) => {
     <div
       id={type}
       ref={ref}
-      className={`flex items-center justify-center relative w-[100%] h-[100vh] ${
+      className={`flex items-center justify-center relative w-[100%] h-[100vh] overflow-hidden ${
         type === 'services' || type === 'about' || type === 'testimonials'
           ? 'bg-gradient-to-b dark:from-[#111132] dark:to-[#0c0c1d] from-[#f0f0f0] to-[#a0a0a0]'
           : 'bg-gradient-to-b dark:from-[#111132] dark:to-[#505064] from-[#f0f0f0] to-[#c0c0c0]'
