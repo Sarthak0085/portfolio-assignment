@@ -1,11 +1,10 @@
 import { userData } from '@/utils/types';
 import { motion, useScroll } from 'framer-motion';
-import { MutableRefObject, useRef } from 'react';
 import Details from '../shared/Details';
+import { useRef } from 'react';
 
 const Experience = ({ data }: { data: userData | null }) => {
-  //   const { loading, error, data } = useFetchData<userData>();
-  const ref: MutableRefObject<HTMLDivElement | null> = useRef(null);
+  const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'center start'],

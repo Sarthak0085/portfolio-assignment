@@ -1,10 +1,11 @@
+'use client';
 import { userData } from '@/utils/types';
 import { motion, useScroll } from 'framer-motion';
-import { MutableRefObject, useRef } from 'react';
+import { useRef } from 'react';
 import Details from '../shared/Details';
 
 const Education = ({ data }: { data: userData | null }) => {
-  const ref: MutableRefObject<HTMLDivElement | null> = useRef(null);
+  const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'center start'],

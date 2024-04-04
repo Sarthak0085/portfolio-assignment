@@ -1,6 +1,5 @@
 'use client';
 import About from '@/components/About/About';
-import CircularText from '@/components/CircularText';
 import Contact from '@/components/Contact/Contact';
 import Experience from '@/components/Experience/Experience';
 import Hero from '@/components/Home/Hero';
@@ -15,10 +14,6 @@ import { userData } from '@/utils/types';
 
 export default function Home() {
   const { loading, error, data } = useFetchData<userData>();
-
-  // if (!isMounted) {
-  //   return null;
-  // }
 
   return loading ? (
     <Loader />
