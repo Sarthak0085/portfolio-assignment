@@ -35,7 +35,7 @@ const CircularText = () => {
 
     setOuterCoordinates(outerCoords);
     setInnerCoordinates(innerCoords);
-  }, []);
+  }, [center.x, center.y]);
 
   return (
     <motion.div

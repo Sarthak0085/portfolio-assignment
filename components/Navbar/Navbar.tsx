@@ -77,7 +77,7 @@ const Navbar: React.FC<Props> = ({ data, openNav }) => {
 
     const { title, description, keywords } = updateTitleDescriptionKeywords();
     setHeadProps({ title, description, keywords });
-  }, [activeLink]);
+  }, [activeLink, data, pathname]);
 
   return (
     <>

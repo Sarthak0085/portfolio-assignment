@@ -78,7 +78,7 @@ const MobileNavbar: React.FC<Props> = ({ data, nav, closeNav }) => {
 
     const { title, description, keywords } = updateTitleDescriptionKeywords();
     setHeadProps({ title, description, keywords });
-  }, [activeLink]);
+  }, [activeLink, data, pathname]);
 
   return (
     <div
